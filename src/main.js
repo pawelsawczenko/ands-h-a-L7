@@ -120,3 +120,79 @@ resetBtn.addEventListener("click", () => {
 //
 // -- H / A - L6 -- 2 -- timer
 //
+
+const timerStartBtn = document.querySelector("#timer-start");
+const timerStopBtn = document.querySelector("#timer-stop");
+const timerResetBtn = document.querySelector("#timer-reset");
+
+const userInput = document.querySelector("#user-input");
+
+const plusSecBtn = document.querySelector("#sec-btn");
+const plusMinBtn = document.querySelector("#min-btn");
+
+const timerHour = document.querySelector("#timer-hr");
+const timerMin = document.querySelector("#timer-min");
+const timerSec = document.querySelector("#timer-sec");
+
+let timerInSeconds;
+let timerId;
+
+function timer() {
+  if (timerInSeconds === 0) {
+    timerHour.innerHTML = "00";
+    timerMin.innerHTML = "00";
+    timerSec.innerHTML = "00";
+
+    clearInterval(timerId);
+    return;
+  }
+
+  timerInSeconds--;
+
+  let hour = Math.floor(timerInSeconds / 3600);
+  let min = Math.floor(timerInSeconds / 60);
+  let sec;
+
+  if (timerInSeconds <= 60) {
+    sec = timerInSeconds;
+  }
+
+  let hrStr = hour < 10 ? "0" + hour : hour;
+  let minStr = min < 10 ? "0" + min : min;
+  let secStr = sec < 10 ? "0" + sec : sec;
+
+  // console.log(`${hrStr}:${minStr}:${secStr}`);
+  // console.log("tick");
+
+  timerHour.innerHTML = hrStr;
+  timerMin.innerHTML = minStr;
+  timerSec.innerHTML = secStr;
+}
+
+timerStartBtn.addEventListener("click", () => {
+  timerInSeconds = Number(document.querySelector("#user-input").value);
+  console.log(timerInSeconds);
+
+  timerId = setInterval(timer, 1000);
+  timerStartBtn.disabled = true;
+  timerStopBtn.disabled = false;
+});
+
+timerStopBtn.addEventListener("click", () => {
+  clearInterval(timerId);
+
+  timerStartBtn.disabled = false;
+  timerStopBtn.disabled = true;
+});
+
+timerResetBtn.addEventListener("click", () => {
+  clearInterval(timerId);
+
+  timerStartBtn.disabled = false;
+  timerStopBtn.disabled = true;
+
+  timerHour.innerHTML = "00";
+  timerMin.innerHTML = "00";
+  timerSec.innerHTML = "00";
+  timerInSeconds;
+});
