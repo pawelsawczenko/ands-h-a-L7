@@ -11,7 +11,36 @@
       <div id="h-a-1">
         <button class="btn runaway-btn">click me</button>
       </div>
-      <div id="h-a-2"></div>
+      <div id="h-a-2">
+        <div class="stopwatch"></div>
+        <div class="timer">
+          <div id="timer-time">
+            <span id="timer-hr">00</span>
+            <span>&#58;</span>
+            <span id="timer-min">00</span>
+            <span>&#58;</span>
+            <span id="timer-sec">00</span>
+          </div>
+          <div id="timer-input">
+            <div>
+              <label for="user-input">set timer in seconds</label>
+            </div>
+            <div class="inputs">
+              <input id="user-input" name="user-input" type="text" value="0" />
+            </div>
+            <div>
+              <button class="btn" id="sec-btn">+30 sec</button>
+              <button class="btn" id="min-btn">+1 min</button>
+            </div>
+          </div>
+
+          <div id="timer-buttons">
+            <button class="btn" id="timer-start">Start</button>
+            <button class="btn" disabled id="timer-stop">Stop</button>
+            <button class="btn" id="timer-reset">Reset</button>
+          </div>
+        </div>
+      </div>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
