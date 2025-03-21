@@ -169,11 +169,23 @@ function timer() {
   timerSec.innerHTML = secStr;
 }
 
+plusSecBtn.addEventListener("click", () => {
+  userInput.value = +userInput.value + 30;
+});
+
+plusMinBtn.addEventListener("click", () => {
+  userInput.value = +userInput.value + 60;
+});
+
 timerStartBtn.addEventListener("click", () => {
-  timerInSeconds = Number(document.querySelector("#user-input").value);
+  timerInSeconds = Number(userInput.value);
   console.log(timerInSeconds);
 
   timerId = setInterval(timer, 1000);
+  userInput.disabled = true;
+  plusSecBtn.disabled = true;
+  plusMinBtn.disabled = true;
+
   timerStartBtn.disabled = true;
   timerStopBtn.disabled = false;
 });
@@ -188,9 +200,14 @@ timerStopBtn.addEventListener("click", () => {
 timerResetBtn.addEventListener("click", () => {
   clearInterval(timerId);
 
+  userInput.disabled = false;
+  plusSecBtn.disabled = false;
+  plusMinBtn.disabled = false;
+
   timerStartBtn.disabled = false;
   timerStopBtn.disabled = true;
 
+  userInput.value = 0;
   timerHour.innerHTML = "00";
   timerMin.innerHTML = "00";
   timerSec.innerHTML = "00";
