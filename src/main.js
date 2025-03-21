@@ -151,7 +151,7 @@ function timer() {
 
   let hour = Math.floor(timerInSeconds / 3600);
   let min = Math.floor(timerInSeconds / 60);
-  let sec;
+  let sec = timerInSeconds - hour * 3600 - min * 60;
 
   if (timerInSeconds <= 60) {
     sec = timerInSeconds;
