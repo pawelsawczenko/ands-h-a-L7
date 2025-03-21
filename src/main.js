@@ -120,6 +120,7 @@ resetBtn.addEventListener("click", () => {
 //
 // -- H / A - L6 -- 2 -- timer
 //
+const timerItem = document.querySelector(".timer");
 
 const timerStartBtn = document.querySelector("#timer-start");
 const timerStopBtn = document.querySelector("#timer-stop");
@@ -134,7 +135,7 @@ const timerHour = document.querySelector("#timer-hr");
 const timerMin = document.querySelector("#timer-min");
 const timerSec = document.querySelector("#timer-sec");
 
-let timerInSeconds;
+let timerInSeconds = 0;
 let timerId;
 
 function timer() {
@@ -178,16 +179,17 @@ plusMinBtn.addEventListener("click", () => {
 });
 
 timerStartBtn.addEventListener("click", () => {
-  timerInSeconds = Number(userInput.value);
-  console.log(timerInSeconds);
+  if (Number(userInput.value) > 0) {
+    if (!timerInSeconds) timerInSeconds = Number(userInput.value);
 
-  timerId = setInterval(timer, 1000);
-  userInput.disabled = true;
-  plusSecBtn.disabled = true;
-  plusMinBtn.disabled = true;
+    timerId = setInterval(timer, 1000);
+    userInput.disabled = true;
+    plusSecBtn.disabled = true;
+    plusMinBtn.disabled = true;
 
-  timerStartBtn.disabled = true;
-  timerStopBtn.disabled = false;
+    timerStartBtn.disabled = true;
+    timerStopBtn.disabled = false;
+  }
 });
 
 timerStopBtn.addEventListener("click", () => {
@@ -211,5 +213,55 @@ timerResetBtn.addEventListener("click", () => {
   timerHour.innerHTML = "00";
   timerMin.innerHTML = "00";
   timerSec.innerHTML = "00";
-  timerInSeconds;
+  timerInSeconds = 0;
 });
+
+// timerItem.addEventListener("click", (e) => {
+//   console.log(e.target.id);
+
+//   if (e.target.id === "sec-btn") {
+//     userInput.value = +userInput.value + 30;
+//   }
+
+//   if (e.target.id === "min-btn") {
+//     userInput.value = +userInput.value + 60;
+//   }
+
+//   if (e.target.id === "timer-start") {
+//     if (Number(userInput.value) > 0) {
+//       if (!timerInSeconds) timerInSeconds = Number(userInput.value);
+
+//       timerId = setInterval(timer, 1000);
+//       userInput.disabled = true;
+//       plusSecBtn.disabled = true;
+//       plusMinBtn.disabled = true;
+
+//       timerStartBtn.disabled = true;
+//       timerStopBtn.disabled = false;
+//     }
+//   }
+
+//   if (e.target.id === "timer-stop") {
+//     clearInterval(timerId);
+
+//     timerStartBtn.disabled = false;
+//     timerStopBtn.disabled = true;
+//   }
+
+//   if (e.target.id === "timer-reset") {
+//     clearInterval(timerId);
+
+//     userInput.disabled = false;
+//     plusSecBtn.disabled = false;
+//     plusMinBtn.disabled = false;
+
+//     timerStartBtn.disabled = false;
+//     timerStopBtn.disabled = true;
+
+//     userInput.value = 0;
+//     timerHour.innerHTML = "00";
+//     timerMin.innerHTML = "00";
+//     timerSec.innerHTML = "00";
+//     timerInSeconds = 0;
+//   }
+// });
