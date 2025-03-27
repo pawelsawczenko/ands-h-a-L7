@@ -1,6 +1,6 @@
 import "./style.css";
 //
-// -- H / A - L6 -- 1
+// -- H / A - L7 -- 1
 //
 
 const runawayBtn = document.querySelector(".runaway-btn");
@@ -28,7 +28,7 @@ runawayBtn.addEventListener("click", () => {
 });
 
 //
-// -- H / A - L6 -- 2 -- stopwatch
+// -- H / A - L7 -- 2 -- stopwatch
 //
 
 const stopwatchItem = document.querySelector(".stopwatch");
@@ -118,7 +118,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 //
-// -- H / A - L6 -- 2 -- timer
+// -- H / A - L7 -- 2 -- timer
 //
 const timerItem = document.querySelector(".timer");
 
